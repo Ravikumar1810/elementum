@@ -1,0 +1,127 @@
+.testi {
+  padding: 80px 52px;
+  position: relative;
+  overflow: hidden;
+  background: var(--white);
+}
+
+.testi__squiggle {
+  position: absolute;
+  top: 16px;
+  right: 60px;
+  width: 180px;
+  opacity: 0.7;
+}
+.testi-path {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: draw 2s ease forwards 0.5s;
+}
+@keyframes draw { to { stroke-dashoffset: 0; } }
+
+.testi__layout {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 120px 1fr 120px;
+  align-items: center;
+  gap: 40px;
+}
+
+/* ── Sides ── */
+.testi__side {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.tav {
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #fff;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  animation: avFloat 5s ease-in-out infinite;
+  transition: transform 0.35s ease;
+  flex-shrink: 0;
+}
+.tav:hover { transform: scale(1.12) !important; }
+.tav img { width: 100%; height: 100%; object-fit: cover; }
+
+@keyframes avFloat {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+/* Varying sizes — matching Figma */
+.tav-l1 { width: 52px; height: 52px; }
+.tav-l2 { width: 46px; height: 46px; }
+.tav-l3 { width: 60px; height: 60px; }
+.tav-r1 { width: 56px; height: 56px; }
+.tav-r2 { width: 48px; height: 48px; animation-delay: 0.6s; }
+.tav-r3 { width: 72px; height: 72px; animation-delay: 1.2s; }
+
+/* ── Center ── */
+.testi__center { text-align: center; }
+
+.testi__h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+}
+
+.testi__about {
+  display: inline-block;
+  border-bottom: 3px solid var(--yellow-hl);
+  padding-bottom: 1px;
+  background: rgba(168, 224, 176, 0.35);
+  border-radius: 6px;
+  padding: 0 6px 1px;
+}
+
+.testi__card {
+  background: #f0f7ef;
+  border-radius: 16px;
+  padding: 32px 36px;
+  position: relative;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.testi__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.08);
+}
+
+.testi__qq {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 0.6;
+  color: var(--black);
+  opacity: 0.12;
+  display: block;
+}
+.testi__qq.open  { text-align: left;  margin-bottom: 6px; }
+.testi__qq.close { text-align: right; margin-top: 6px; }
+
+.testi__text {
+  font-size: 0.83rem;
+  color: #555;
+  line-height: 1.85;
+  font-style: italic;
+  text-align: center;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .testi { padding: 60px 24px; }
+  .testi__layout { grid-template-columns: 80px 1fr 80px; gap: 20px; }
+  .tav-l1,.tav-l2,.tav-l3 { width: 46px; height: 46px; }
+  .tav-r1,.tav-r2,.tav-r3 { width: 46px; height: 46px; }
+}
+@media (max-width: 600px) {
+  .testi__side { display: none; }
+  .testi__layout { grid-template-columns: 1fr; }
+}

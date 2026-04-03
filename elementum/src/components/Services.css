@@ -1,0 +1,111 @@
+.services {
+  padding: 40px 52px 0;
+  position: relative;
+  overflow: visible;
+}
+
+.services__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* ── Visual ── */
+.services__visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.services__tri {
+  position: absolute;
+  width: 0; height: 0;
+  z-index: 3;
+}
+.t1 {
+  border-left: 36px solid transparent;
+  border-right: 36px solid transparent;
+  border-bottom: 62px solid var(--red);
+  bottom: 0; right: 0;
+  animation: triPulse 3.5s ease-in-out infinite;
+}
+.t2 {
+  border-left: 22px solid transparent;
+  border-right: 22px solid transparent;
+  border-bottom: 38px solid var(--red);
+  top: 8px; left: 12px;
+  opacity: 0.55;
+  animation: triPulse 3.5s ease-in-out infinite 1s;
+}
+@keyframes triPulse { 0%,100%{transform:scale(1);} 50%{transform:scale(1.1);} }
+
+.services__circle {
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 16px 50px rgba(0,0,0,0.13);
+  transition: transform 0.4s ease;
+}
+.services__circle:hover { transform: scale(1.03); }
+.services__circle img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.services__circle:hover img { transform: scale(1.06); }
+
+/* ── Text ── */
+.services__h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+
+.services__how {
+  display: inline-block;
+  border-bottom: 2px solid var(--yellow-hl);
+  padding-bottom: 1px;
+}
+
+.services__progress {
+  font-style: italic;
+  display: inline-block;
+  border-bottom: 2px solid var(--yellow-hl);
+}
+
+.services__body {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 24px;
+  max-width: 380px;
+}
+
+/* ── Wave ── */
+.services__wave {
+  display: block;
+  width: 70%;
+  height: 70px;
+  margin: 10px auto 0;
+  overflow: visible;
+}
+.wave-path {
+  stroke-dasharray: 800;
+  stroke-dashoffset: 800;
+  animation: draw 2.5s ease forwards 0.8s;
+}
+@keyframes draw { to { stroke-dashoffset: 0; } }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .services { padding: 50px 24px 0; }
+  .services__inner { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+  .services__body { max-width: 100%; margin: 0 auto 24px; }
+  .readmore { justify-content: center; }
+  .services__circle { width: 260px; height: 260px; margin: 0 auto; }
+}

@@ -1,0 +1,220 @@
+.hero {
+  min-height: 100vh;
+  padding: 130px 52px 60px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Left squiggle ── */
+.hero__squiggle {
+  position: absolute;
+  left: 0;
+  top: 28%;
+  width: 70px;
+  height: 260px;
+  opacity: 0.9;
+}
+.hero__squiggle path {
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  animation: draw 2.2s ease forwards 0.3s;
+}
+@keyframes draw { to { stroke-dashoffset: 0; } }
+
+/* ── Purple teardrop top-right ── */
+.hero__teardrop {
+  position: absolute;
+  top: 90px;
+  right: 52px;
+  width: 48px;
+  height: 62px;
+  background: var(--purple);
+  border-radius: 50% 50% 45% 45% / 55% 55% 45% 45%;
+  transform: rotate(-15deg);
+  animation: tearFloat 6s ease-in-out infinite;
+}
+.hero__square {
+  position: absolute;
+  top: 64px;
+  right: 24px;
+  width: 68px;
+  height: 68px;
+  background: rgba(232, 58, 46, 0.24);
+  border: 2px solid rgba(232, 58, 46, 0.9);
+  transform: rotate(9deg);
+  z-index: 1;
+  border-radius: 14px;
+}
+.hero__guide {
+  position: absolute;
+  bottom: 68px;
+  left: 0;
+  width: 100%;
+  height: 140px;
+  pointer-events: none;
+  z-index: 1;
+}
+@keyframes tearFloat {
+  0%,100% { transform: rotate(-15deg) translateY(0); }
+  50%      { transform: rotate(-10deg) translateY(-8px); }
+}
+
+/* ── Heading ── */
+.hero__content {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  max-width: 860px;
+  width: 100%;
+}
+
+.hero__h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 5.3vw, 5.2rem);
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--black);
+  margin-bottom: 36px;
+}
+
+.hw {
+  display: inline-block;
+  margin-right: 2px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+  display: inline-block;
+}
+
+/* Highlight spans */
+.hl-yellow {
+  position: relative;
+  display: inline-block;
+}
+.hl-yellow::after {
+  content: '';
+  position: absolute;
+  bottom: 2px; left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--yellow-hl);
+  border-radius: 2px;
+  z-index: -1;
+}
+
+.hl-pink {
+  background: var(--pink-hl);
+  border-radius: 8px;
+  padding: 2px 10px;
+  display: inline-block;
+}
+
+.hl-green {
+  background: var(--green-hl);
+  border-radius: 8px;
+  padding: 2px 10px;
+  display: inline-block;
+}
+
+.hero__sub {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.9;
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top: 16px;
+}
+
+.hero__h1 br { display: none; }
+
+@media (max-width: 980px) {
+  .hero__h1 br { display: block; content: '';} 
+}
+
+/* ── Avatars ── */
+.hero__avatars {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  height: 240px;
+  margin-top: 36px;
+}
+
+.av {
+  position: absolute;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #fff;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+  animation: avFloat 5s ease-in-out infinite;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.av:hover {
+  transform: translateY(-10px) scale(1.08) !important;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+  z-index: 10;
+}
+.av img { width: 100%; height: 100%; object-fit: cover; }
+
+@keyframes avFloat {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+/* Individual sizes & positions — matching Figma spread */
+.av1 { width: 96px;  height: 96px;  left: 0%;   top: 55%; }
+.av2 { width: 108px; height: 108px; left: 9%;   top: 20%; }
+.av3 { width: 118px; height: 118px; left: 22%;  top: 4%;  }
+.av4 { width: 100px; height: 100px; left: 37%;  top: 32%; }
+.av5 { width: 105px; height: 105px; left: 51%;  top: 8%;  }
+.av6 { width: 96px;  height: 96px;  left: 64%;  top: 30%; }
+.av7 { width: 90px;  height: 90px;  left: 76%;  top: 5%;  }
+.av8 { width: 108px; height: 108px; left: 87%;  top: 38%; }
+
+/* Bottom pink glow */
+.hero__glow {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 180px;
+  background: radial-gradient(ellipse, rgba(240,168,200,0.35) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .hero { padding: 120px 24px 40px; }
+  .hero__avatars { height: 180px; }
+  .av1 { width: 72px; height: 72px; }
+  .av2 { width: 80px; height: 80px; }
+  .av3 { width: 86px; height: 86px; }
+  .av4 { width: 74px; height: 74px; }
+  .av5 { width: 78px; height: 78px; }
+  .av6 { width: 72px; height: 72px; }
+  .av7 { width: 68px; height: 68px; }
+  .av8 { width: 80px; height: 80px; }
+}
+
+@media (max-width: 600px) {
+  .hero__avatars {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    height: auto;
+    gap: 10px;
+    max-width: 320px;
+    margin: 30px auto 0;
+  }
+  .av {
+    position: static !important;
+    width: 68px !important;
+    height: 68px !important;
+    margin: 0 auto;
+  }
+  .hero__squiggle { width: 44px; }
+}
